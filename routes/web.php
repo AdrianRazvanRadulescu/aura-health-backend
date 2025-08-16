@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AppointmentController;
+use App\Http\Controllers\Api\MedicalRecordController;
+use App\Http\Controllers\Api\DoctorController;
 use Illuminate\Support\Facades\Route;
 
-// Grupăm toate rutele noastre "stateful" sub prefixul /api
 Route::prefix('api')->group(function () {
     
     Route::post('/register', [AuthController::class, 'register']);
@@ -12,6 +14,11 @@ Route::prefix('api')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/user', [AuthController::class, 'user']);
+        Route::get('/appointments', [AppointmentController::class, 'index']);
+        Route::get('/medical-records', [MedicalRecordController::class, 'index']);
+        Route::get('/doctors', [DoctorController::class, 'index']);
+        Route::post('/appointments', [AppointmentController::class, 'store']);
+        Route::get('/doctor/appointments', [DoctorController::class, 'appointments']);
     });
 
 });
