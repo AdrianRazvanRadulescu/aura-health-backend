@@ -6,13 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('specialty');
-            $table->string('avatar_url')->nullable();
+            $table->text('description')->nullable(); // Adăugat
+            $table->string('photo_url')->nullable(); // Adăugat
+            $table->decimal('price', 8, 2)->default(250.00); // Adăugat
             $table->timestamps();
         });
     }

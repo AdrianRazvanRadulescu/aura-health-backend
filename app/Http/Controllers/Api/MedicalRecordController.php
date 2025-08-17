@@ -18,4 +18,16 @@ class MedicalRecordController extends Controller
 
         return JsonResource::collection($records);
     }
+
+    public function recent(Request $request): JsonResource
+    {
+        $records = MedicalRecord::with('doctor')
+            ->where('user_id', $request->user()->id)
+            ->orderBy('issued_date', 'desc')
+            ->limit(3)
+            ->get();
+
+        return JsonResource::collection($records);
+    }
+
 }

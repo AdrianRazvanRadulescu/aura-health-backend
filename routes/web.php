@@ -1,3 +1,4 @@
+// routes/web.php
 <?php
 
 use App\Http\Controllers\Api\AuthController;
@@ -15,7 +16,10 @@ Route::prefix('api')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/user', [AuthController::class, 'user']);
         Route::get('/appointments', [AppointmentController::class, 'index']);
+        
         Route::get('/medical-records', [MedicalRecordController::class, 'index']);
+        Route::get('/medical-records/recent', [MedicalRecordController::class, 'recent']); // NOU: Adaugă această linie
+
         Route::get('/doctors', [DoctorController::class, 'index']);
         Route::post('/appointments', [AppointmentController::class, 'store']);
         Route::get('/doctor/appointments', [DoctorController::class, 'appointments']);
