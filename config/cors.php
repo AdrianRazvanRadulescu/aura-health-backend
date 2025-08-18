@@ -1,7 +1,8 @@
 <?php
 
-return [
+// config/cors.php
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Cross-Origin Resource Sharing (CORS) Configuration
@@ -15,20 +16,20 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['*'], // PERMITE ORICE RUTA
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['*'], // PERMITE ORICE METODA (GET, POST, PUT, DELETE, OPTIONS)
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:5173')],
+    'allowed_origins' => ['*'], // PERMITE ORICE ORIGINE (PERICULOS, DAR NECESAR ACUM)
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['*'], // PERMITE ORICE HEADER
 
     'exposed_headers' => [],
 
     'max_age' => 0,
 
-    'supports_credentials' => true,
+    'supports_credentials' => true, // LASĂ ASTA PE TRUE PENTRU SANCTUM
 
 ];
